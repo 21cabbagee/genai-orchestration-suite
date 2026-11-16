@@ -1,0 +1,74 @@
+.console { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px; }
+.console label { font-weight: 600; display: flex; justify-content: space-between; margin-bottom: 8px; }
+.console label kbd { font: 500 0.72rem var(--mono); color: var(--muted); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; }
+textarea {
+  width: 100%; font: inherit; padding: 14px; border-radius: 12px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); resize: vertical; min-height: 120px; transition: border-color 0.2s, box-shadow 0.2s;
+}
+textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--glow); }
+.chips { display: grid; gap: 6px; margin: 14px 0 16px; }
+.chips button {
+  font: inherit; font-size: 0.84rem; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--text); cursor: pointer; text-align: left; display: flex; gap: 10px; align-items: center; transition: border-color 0.15s, transform 0.15s;
+}
+.chips button:hover { border-color: var(--accent); transform: translateX(2px); }
+.chips button .ci { font-size: 1rem; }
+.chips button .ct { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chips button .cx { font-size: 0.7rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
+#run { width: 100%; justify-content: center; }
+#run.busy { pointer-events: none; opacity: 0.75; }
+.objectives { margin-top: 18px; }
+
+/* agent lane */
+.lane { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; padding: 6px 0 18px; }
+.lane::before { content: ""; position: absolute; left: 8%; right: 8%; top: 30px; height: 2px; background: var(--border); }
+.lane .fill { position: absolute; left: 8%; top: 30px; height: 2px; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 0.35s ease; box-shadow: 0 0 10px var(--glow); }
+.ag { position: relative; text-align: center; font-size: 0.74rem; color: var(--muted); }
+.ag .orb { width: 50px; height: 50px; margin: 5px auto 6px; border-radius: 16px; display: grid; place-items: center; font-size: 22px; background: var(--surface-solid); border: 1px solid var(--border); transition: all 0.25s; position: relative; }
+.ag.active .orb { border-color: var(--accent); box-shadow: 0 0 0 5px var(--glow), 0 0 26px var(--glow); transform: translateY(-3px) scale(1.06); }
+.ag.done .orb { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
+.ag.done .orb::after { content: "✓"; position: absolute; right: -5px; top: -5px; width: 18px; height: 18px; border-radius: 50%; background: var(--ok); color: #fff; font-size: 11px; display: grid; place-items: center; font-weight: 700; }
+.ag.retry .orb::after { content: "↻"; background: var(--warn); }
+.ag.active { color: var(--text); font-weight: 600; }
+
+.result { border-radius: 14px; padding: 18px; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, transparent), color-mix(in srgb, var(--accent-2) 6%, transparent)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); animation: pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2); }
+@keyframes pop { from { opacity: 0; transform: scale(0.97); } }
+.result-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+.score { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--accent); white-space: nowrap; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.answer { font-size: 1.02rem; line-height: 1.6; }
+.answer sup { color: var(--accent); font-weight: 700; }
+.sources { margin-top: 12px; font-size: 0.84rem; color: var(--muted); }
+.meters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 14px 0 4px; }
+.meter { font-size: 0.75rem; color: var(--muted); }
+.meter b { color: var(--text); font-variant-numeric: tabular-nums; }
+.meter .track { height: 6px; border-radius: 99px; background: var(--surface-solid); margin-top: 4px; overflow: hidden; }
+.meter .track i { display: block; height: 100%; width: 0; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.empty { text-align: center; padding: 30px 10px; color: var(--muted); border: 1px dashed var(--border); border-radius: 14px; }
+.empty .big { font-size: 2.2rem; }
+
+details.trace-box { margin-top: 16px; }
+details.trace-box summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--muted); list-style: none; display: flex; align-items: center; gap: 6px; }
+details.trace-box summary::before { content: "▸"; transition: transform 0.2s; }
+details.trace-box[open] summary::before { transform: rotate(90deg); }
+.trace { list-style: none; padding: 0; margin: 10px 0 0; font-size: 0.85rem; }
+.trace li { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--border); }
+.trace .agent { font-family: var(--mono); font-weight: 700; color: var(--accent); }
+.trace .action { font-weight: 600; }
+.trace .detail { color: var(--muted); font-family: var(--mono); font-size: 0.76rem; overflow-wrap: anywhere; }
+.passages { display: grid; gap: 8px; margin-top: 12px; }
+.passage { border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; font-size: 0.86rem; background: var(--surface-2); }
+.passage header { display: flex; justify-content: space-between; gap: 8px; font-weight: 600; margin-bottom: 4px; }
+.bar { height: 4px; background: var(--surface-solid); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 2px; }
+
+.roi { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px; }
+
+@media (max-width: 860px) {
+  .console, .roi { grid-template-columns: minmax(0, 1fr); }
+  .trace li { grid-template-columns: 1fr; gap: 2px; }
+  .ag .orb { width: 40px; height: 40px; font-size: 18px; border-radius: 12px; }
+  .lane::before, .lane .fill { top: 25px; }
+  .ag { font-size: 0.66rem; }
+  .meters { grid-template-columns: minmax(0, 1fr); }
+}
