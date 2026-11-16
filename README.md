@@ -18,12 +18,34 @@ A multi-agent system that takes an incoming employee or customer request, cleans
 | **LLM backends** | `LangChainBackend` wraps any LangChain chat model (Claude by default); `LocalExtractiveBackend` runs offline with no API key | `genai_suite/llm.py` |
 | **ROI model** | Converts the observed auto-resolve / assist / escalate mix into hours saved, payback and first-year ROI | `genai_suite/roi.py` |
 
+### Flow
+
+```mermaid
+flowchart LR
+    A([Incoming request<br/>email · ticket · chat]) --> B
+
+    subgraph INTAKE[Intake agent]
+        B[PII redaction<br/>email · phone · PAN · Aadhaar · card] --> C[Summarise long requests]
+        C --> D[Few-shot intent classifier<br/>PyTorch]
+        D --> E[Entity & urgency extraction]
+    end
+
+    E --> F[Router agent<br/>plan steps · set retrieval width]
+    F --> G[Research agent<br/>vector search + intent prior]
+    G --> H[Analyst agent<br/>cited draft via LangChain / Claude]
+    H --> I{Critic agent<br/>grounded? relevant?}
+    I -- weak --> J[Expand query] --> G
+    I -- pass --> K{Responder agent}
+    K -- confident --> L([Auto-resolve])
+    K -- uncertain --> M([Draft for human review])
+    K -- high priority --> N([Escalate to owning team])
+
+    L & M & N --> O[(Audit trace)]
+    O --> P[ROI model<br/>resolution mix → hours · ₹ · payback]
+
+    KB[(Policy knowledge base)] -.-> G
 ```
-request ─► Intake ─► Router ─► Research ─► Analyst ─► Critic ──► Responder ─► response + trace
-           (PII,      (plan,     (vector     (LLM or      │  ▲      (auto-resolve /
-           classify,   k)        search)     extractive)  │  │       assist / escalate)
-           extract)                                       └──┘ retry with expanded query
-```
+
 
 ## Quick start
 
@@ -46,6 +68,10 @@ python -m genai_suite "Who approves an expense claim of INR 32,000?"
 
 `scripts/build_demo.py` runs the Python pipeline on sample requests and exports the trained classifier weights, TF-IDF vocabulary and knowledge-base chunks to `docs/data/`. The GitHub Pages site (`docs/`) loads those files and runs the same analyzer, classifier, retrieval, critic and routing logic in JavaScript, so you can try your own requests without a backend. The browser uses the offline extractive backend; LLM generation is only available when running the Python package locally.
 
-## Honest scope
+## Measuring ROI
 
-The knowledge base (six policy documents) and the 48 training requests are synthetic and were written for this project. The ROI figures are a model driven by stated assumptions you can change on the demo page, not measurements from a production deployment.
+Every run records how the request was resolved (auto-resolved, drafted for a human, or escalated). `genai_suite/roi.py` turns that resolution mix into handling minutes saved per request, hours saved per month, net monthly saving, payback period and first-year ROI. That makes the value of a deployment measurable from its own logs instead of estimated by hand. The demo page lets you change volume, handling time and cost assumptions live.
+
+## Data & methodology
+
+The suite ships with a simulated enterprise environment so it runs end to end without access to confidential systems: six policy documents (travel & expense, IT access, procurement, refunds, leave, data protection) and a labelled set of 48 support requests across six intents. To point it at a real organisation, drop its policy documents into `data/corpus/`, replace `data/tickets.csv` with labelled historical tickets, and set `ANTHROPIC_API_KEY` for LLM generation. The ROI figures in the demo are produced by the ROI model from the sample batch, using adjustable assumptions.
