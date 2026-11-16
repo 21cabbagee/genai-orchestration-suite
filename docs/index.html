@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentic Orchestration Suite</title>
+  <meta name="description" content="Multi-agent RAG system with PII redaction, few-shot PyTorch classification, a grounding critic and an ROI model. Runs live in your browser.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Project · Saurabh Pandey</p>
+      <h1>Enterprise GenAI &amp; Agentic Process Orchestration Suite</h1>
+      <p class="lede">Six cooperating agents take an incoming employee or customer request, redact PII, classify it, answer it from a policy knowledge base with RAG, check their own answer, and decide whether to auto-resolve, draft for a human, or escalate.</p>
+      <div class="tags"><span>Python</span><span>LangChain</span><span>PyTorch</span><span>scikit-learn</span><span>pydantic</span><span>RAG</span><span>Few-shot</span></div>
+      <div class="cta">
+        <a class="btn primary" href="#demo">Try it live</a>
+        <a class="btn" href="https://github.com/21cabbagee/genai-orchestration-suite">View source on GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="demo">
+      <h2>Live demo</h2>
+      <p class="muted">Runs entirely in your browser using the classifier weights and retrieval index exported from the Python pipeline (offline extractive backend; no request leaves this page).</p>
+      <div class="demo">
+        <div class="panel input">
+          <label for="req">Request</label>
+          <textarea id="req" rows="5">My expense claim from the Delhi trip is 40 days old, can I still submit it? Reach me at ravi.k@acme.in</textarea>
+          <div class="chips" id="chips"></div>
+          <button class="btn primary" id="run">Run agents</button>
+          <div class="kb">
+            <h3>Knowledge base</h3>
+            <ul id="kb"></ul>
+          </div>
+        </div>
+        <div class="panel output">
+          <div id="result" class="result hidden">
+            <div class="badges" id="badges"></div>
+            <div class="answer" id="answer"></div>
+            <div class="sources" id="sources"></div>
+          </div>
+          <h3>Agent trace</h3>
+          <ol class="trace" id="trace"><li class="muted">Press “Run agents”.</li></ol>
+          <h3>Retrieved passages</h3>
+          <div id="passages" class="passages"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <div class="flow" aria-label="Agent flow">
+        <div class="node"><b>Intake</b><span>PII redaction · summarise · few-shot classify · extract entities · urgency</span></div>
+        <div class="arrow">→</div>
+        <div class="node"><b>Router</b><span>plans steps, widens retrieval when intent is uncertain</span></div>
+        <div class="arrow">→</div>
+        <div class="node loop"><b>Research → Analyst → Critic</b><span>vector search with intent prior → cited draft (Claude via LangChain, or extractive) → grounding &amp; coverage check; retries with query expansion</span></div>
+        <div class="arrow">→</div>
+        <div class="node"><b>Responder</b><span>auto-resolve · agent-assist · escalate, routed to the owning queue</span></div>
+      </div>
+      <div class="grid3">
+        <div class="card"><h3>Typed shared state</h3><p>Every agent reads and writes one pydantic <code>TaskState</code> and appends to an audit trace, so each decision can be explained after the fact.</p></div>
+        <div class="card"><h3>Guardrails first</h3><p>PII is stripped before retrieval or any LLM call. The critic rejects answers whose sentences aren't supported by retrieved evidence.</p></div>
+        <div class="card"><h3>Model-agnostic</h3><p>The analyst uses any LangChain chat model. With no API key it falls back to an extractive backend, so tests and this demo run offline.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Batch evaluation</h2>
+      <p class="muted">Ten sample requests run through the Python pipeline by <code>scripts/build_demo.py</code>.</p>
+      <div class="table-wrap"><table id="batch"><thead><tr><th>Request</th><th>Intent</th><th>Retries</th><th>Grounding</th><th>Resolution</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section id="roi">
+      <h2>Business case</h2>
+      <p class="muted">The resolution mix from the batch above, combined with assumptions you can change. These are modelled figures, not measured results.</p>
+      <div class="roi">
+        <div class="panel sliders" id="sliders"></div>
+        <div class="kpis" id="kpis"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Synthetic knowledge base and training data, written for this project. Source, tests and docs: <a href="https://github.com/21cabbagee/genai-orchestration-suite">github.com/21cabbagee/genai-orchestration-suite</a></p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

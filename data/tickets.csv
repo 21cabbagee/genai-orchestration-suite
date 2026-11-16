@@ -1,0 +1,49 @@
+text,label
+I submitted my travel claim 40 days late can it still be reimbursed,expense
+How much can I spend on a hotel in Mumbai for a client visit,expense
+My expense claim for the Delhi conference was rejected for missing receipt,expense
+When will my approved reimbursement be paid,expense
+Who approves an expense claim of 30000 rupees,expense
+Can I claim the client dinner I paid for last week,expense
+Is alcohol at a team outing reimbursable,expense
+Need to submit receipts for my cab and flight expenses,expense
+I need access to the Salesforce admin role for the new campaign,it_access
+My account is locked after too many password attempts,it_access
+Please provision read access to the production database,it_access
+My laptop screen cracked yesterday and I need a replacement,it_access
+I lost my laptop at the airport what should I do,it_access
+New joiner starting Monday needs a laptop and email account,it_access
+Cannot log in to VPN password reset not working,it_access
+How long does it take to get access to the finance system,it_access
+We want to buy 20 monitors worth 4 lakh how many quotes do we need,procurement
+Vendor invoice is on hold because PO number is missing,procurement
+How do we onboard a new supplier for catering,procurement
+Raise a purchase requisition for annual design software licences,procurement
+What documents does a new vendor need to submit,procurement
+When will the vendor be paid for invoice INV-2231,procurement
+Can I use my corporate card for a 30000 rupee purchase,procurement
+Procurement committee approval needed for a 15 lakh contract,procurement
+Customer wants a refund for an annual plan bought 3 weeks ago,refund
+Refund not received yet after 10 days for order ORD-88123,refund
+Customer raised a chargeback but also emailed asking for refund,refund
+Is a customer eligible for full refund after 8 sessions used,refund
+Please process refund of 25000 for enterprise customer,refund
+Customer says card refund is not showing on statement,refund
+Cancel subscription and refund unused months,refund
+Customer bought the wrong plan yesterday and wants money back,refund
+How many days of annual leave can I carry forward,hr_leave
+I was sick for three days do I need a medical certificate,hr_leave
+What is the paternity leave policy,hr_leave
+Can I work from home three days a week,hr_leave
+Applying for leave next week for a family wedding,hr_leave
+How many sick days do I get per year,hr_leave
+I want to switch to a fully remote arrangement,hr_leave
+Maternity leave duration and how to apply,hr_leave
+Customer asked us to delete all their personal data,data_privacy
+Someone pasted customer card numbers into a public chatbot,data_privacy
+How long do we keep support chat transcripts,data_privacy
+I think our CRM export was emailed to the wrong person,data_privacy
+How long must we retain old invoices for audit,data_privacy
+Customer wants a copy of the data we hold on them,data_privacy
+Possible data breach on the shared drive needs reporting,data_privacy
+Can I store customer PAN numbers in a spreadsheet,data_privacy

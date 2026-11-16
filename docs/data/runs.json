@@ -1,0 +1,1399 @@
+[
+ {
+  "request": "My expense claim from the Delhi trip is 40 days old, can I still submit it? Reach me at ravi.k@acme.in",
+  "redacted": "My expense claim from the Delhi trip is 40 days old, can I still submit it? Reach me at [EMAIL]",
+  "pii": {
+   "EMAIL": 1
+  },
+  "summary": "My expense claim from the Delhi trip is 40 days old, can I still submit it? Reach me at [EMAIL]",
+  "category": "expense",
+  "category_confidence": 0.9135482311248779,
+  "entities": {
+   "durations": [
+    "40 days"
+   ]
+  },
+  "priority": "normal",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "My expense claim from the Delhi trip is 40 days old, can I still submit it? Reach me at",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "expense_policy.md#5",
+    "title": "Travel and Expense Policy",
+    "section": "Claim deadlines",
+    "text": "Expense claims must be submitted in the finance portal within 30 days of the expense date. Claims older than 60 days are rejected unless the employee's director approves a late-submission exception.",
+    "score": 0.5019
+   },
+   {
+    "id": "expense_policy.md#7",
+    "title": "Travel and Expense Policy",
+    "section": "Approval and payment",
+    "text": "Claims up to INR 25,000 are approved by the line manager. Claims above INR 25,000 also need finance controller approval. Approved claims are paid with the next payroll cycle, usually within 10 business days.",
+    "score": 0.4028
+   },
+   {
+    "id": "expense_policy.md#4",
+    "title": "Travel and Expense Policy",
+    "section": "Eligible expenses",
+    "text": "Employees may claim reimbursement for business travel, client meals, conference fees and approved software subscriptions. Personal entertainment, fines and alcohol without a client present are not reimbursable.",
+    "score": 0.3001
+   }
+  ],
+  "draft": "Expense claims must be submitted in the finance portal within 30 days of the expense date. [1] Claims older than 60 days are rejected unless the employee's director approves a late-submission exception. [1] Approved claims are paid with the next payroll cycle, usually within 10 business days. [2]",
+  "grounding": 1.0,
+  "coverage": 0.333,
+  "top_score": 0.5019,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "auto_resolved",
+  "final": "Expense claims must be submitted in the finance portal within 30 days of the expense date. [1] Claims older than 60 days are rejected unless the employee's director approves a late-submission exception. [1] Approved claims are paid with the next payroll cycle, usually within 10 business days. [2]\n\nSources: Travel and Expense Policy - Approval and payment; Travel and Expense Policy - Claim deadlines; Travel and Expense Policy - Eligible expenses",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": {
+      "EMAIL": 1
+     }
+    },
+    "ms": 0.36
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "expense",
+     "confidence": 0.914
+    },
+    "ms": 0.36
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {
+      "durations": [
+       "40 days"
+      ]
+     },
+     "priority": "normal"
+    },
+    "ms": 0.36
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.1
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "My expense claim from the Delhi trip is 40 days old, can I still submit it? Reach me at",
+     "k": 3,
+     "prior": "expense_policy.md",
+     "hits": [
+      "Travel and Expense Policy > Claim deadlines (0.50)",
+      "Travel and Expense Policy > Approval and payment (0.40)",
+      "Travel and Expense Policy > Eligible expenses (0.30)"
+     ]
+    },
+    "ms": 0.59
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 297
+    },
+    "ms": 0.17
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.333,
+     "top_score": 0.5019,
+     "verdict": "accept"
+    },
+    "ms": 0.22
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "auto_resolved",
+     "queue": "Finance - Reimbursements"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "How many quotes do we need to buy 20 monitors worth 4 lakh?",
+  "redacted": "How many quotes do we need to buy 20 monitors worth 4 lakh?",
+  "pii": {},
+  "summary": "How many quotes do we need to buy 20 monitors worth 4 lakh?",
+  "category": "procurement",
+  "category_confidence": 0.9812787771224976,
+  "entities": {
+   "amounts": [
+    "4 lakh"
+   ]
+  },
+  "priority": "normal",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "How many quotes do we need to buy 20 monitors worth 4 lakh?",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "procurement_policy.md#17",
+    "title": "Procurement and Vendor Policy",
+    "section": "Quotations",
+    "text": "Purchases between INR 50,000 and INR 10,00,000 need at least two competing quotations. Purchases above INR 10,00,000 need three quotations and approval from the procurement committee.",
+    "score": 0.4604
+   },
+   {
+    "id": "procurement_policy.md#19",
+    "title": "Procurement and Vendor Policy",
+    "section": "Invoices and payment terms",
+    "text": "Vendor invoices must quote a valid purchase order number. Standard payment terms are 45 days from invoice receipt. Invoices without a matching purchase order and goods receipt are put on hold.",
+    "score": 0.2433
+   }
+  ],
+  "draft": "Purchases between INR 50,000 and INR 10,00,000 need at least two competing quotations. [1] Purchases above INR 10,00,000 need three quotations and approval from the procurement committee. [1] Vendor invoices must quote a valid purchase order number. [2]",
+  "grounding": 1.0,
+  "coverage": 0.333,
+  "top_score": 0.4604,
+  "attempts": 1,
+  "needs_retry": false,
+  "resolution": "auto_resolved",
+  "final": "Purchases between INR 50,000 and INR 10,00,000 need at least two competing quotations. [1] Purchases above INR 10,00,000 need three quotations and approval from the procurement committee. [1] Vendor invoices must quote a valid purchase order number. [2]\n\nSources: Procurement and Vendor Policy - Invoices and payment terms; Procurement and Vendor Policy - Quotations",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.13
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "procurement",
+     "confidence": 0.981
+    },
+    "ms": 0.13
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {
+      "amounts": [
+       "4 lakh"
+      ]
+     },
+     "priority": "normal"
+    },
+    "ms": 0.13
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "How many quotes do we need to buy 20 monitors worth 4 lakh?",
+     "k": 3,
+     "prior": "procurement_policy.md",
+     "hits": [
+      "Procurement and Vendor Policy > Invoices and payment terms (0.30)"
+     ]
+    },
+    "ms": 0.38
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 61
+    },
+    "ms": 0.06
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.2,
+     "top_score": 0.3026,
+     "verdict": "retry with expanded query"
+    },
+    "ms": 0.05
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "How many quotes do we need to buy 20 monitors worth 4 lakh? quotations",
+     "k": 4,
+     "prior": "procurement_policy.md",
+     "hits": [
+      "Procurement and Vendor Policy > Quotations (0.46)",
+      "Procurement and Vendor Policy > Invoices and payment terms (0.24)"
+     ]
+    },
+    "ms": 0.35
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 253
+    },
+    "ms": 0.07
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.333,
+     "top_score": 0.4604,
+     "verdict": "accept"
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "auto_resolved",
+     "queue": "Procurement"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "URGENT: I lost my laptop at the airport this morning",
+  "redacted": "URGENT: I lost my laptop at the airport this morning",
+  "pii": {},
+  "summary": "URGENT: I lost my laptop at the airport this morning",
+  "category": "it_access",
+  "category_confidence": 0.9840099215507507,
+  "entities": {},
+  "priority": "high",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "URGENT: I lost my laptop at the airport this morning",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "it_access_policy.md#11",
+    "title": "IT Access and Device Policy",
+    "section": "Laptops and hardware",
+    "text": "New joiners receive a standard laptop on day one. Replacement laptops are issued when a device is older than 4 years or is damaged; damage must be reported within 48 hours. Lost devices must be reported to security immediately so the device can be remotely wiped.",
+    "score": 0.5184
+   }
+  ],
+  "draft": "Replacement laptops are issued when a device is older than 4 years or is damaged; damage must be reported within 48 hours. [1] Lost devices must be reported to security immediately so the device can be remotely wiped. [1]",
+  "grounding": 1.0,
+  "coverage": 0.4,
+  "top_score": 0.5184,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "escalated",
+  "final": "Replacement laptops are issued when a device is older than 4 years or is damaged; damage must be reported within 48 hours. [1] Lost devices must be reported to security immediately so the device can be remotely wiped. [1]\n\nSources: IT Access and Device Policy - Laptops and hardware\nRouted to IT Service Desk as HIGH priority for human follow-up.",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "it_access",
+     "confidence": 0.984
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {},
+     "priority": "high"
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "URGENT: I lost my laptop at the airport this morning",
+     "k": 3,
+     "prior": "it_access_policy.md",
+     "hits": [
+      "IT Access and Device Policy > Laptops and hardware (0.52)"
+     ]
+    },
+    "ms": 0.33
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 221
+    },
+    "ms": 0.06
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.4,
+     "top_score": 0.5184,
+     "verdict": "accept"
+    },
+    "ms": 0.09
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "escalated",
+     "queue": "IT Service Desk"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "Customer raised a chargeback but is also asking for a refund on ORD-55120",
+  "redacted": "Customer raised a chargeback but is also asking for a refund on ORD-55120",
+  "pii": {},
+  "summary": "Customer raised a chargeback but is also asking for a refund on ORD-55120",
+  "category": "refund",
+  "category_confidence": 0.9907609820365906,
+  "entities": {
+   "ids": [
+    "ORD-55120"
+   ]
+  },
+  "priority": "high",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "Customer raised a chargeback but is also asking for a refund on ORD-55120",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "refund_sop.md#23",
+    "title": "Customer Refund Standard Operating Procedure",
+    "section": "Chargebacks and disputes",
+    "text": "If a customer has raised a chargeback with their bank, the refund ticket must be paused and escalated to the payments risk team. Agents must not promise a refund while a dispute is open.",
+    "score": 0.6597
+   },
+   {
+    "id": "refund_sop.md#21",
+    "title": "Customer Refund Standard Operating Procedure",
+    "section": "Processing steps",
+    "text": "The support agent verifies the order ID, checks usage in the billing console, and raises a refund ticket. Refunds up to INR 20,000 are approved by the support lead. Larger refunds need approval from the finance team.",
+    "score": 0.4138
+   },
+   {
+    "id": "refund_sop.md#20",
+    "title": "Customer Refund Standard Operating Procedure",
+    "section": "Refund eligibility",
+    "text": "Customers can request a full refund within 14 days of purchase if the subscription has not been used for more than 5 sessions. After 14 days, refunds are prorated for the unused months of an annual plan.",
+    "score": 0.3746
+   }
+  ],
+  "draft": "If a customer has raised a chargeback with their bank, the refund ticket must be paused and escalated to the payments risk team. [1] The support agent verifies the order ID, checks usage in the billing console, and raises a refund ticket. [2] Customers can request a full refund within 14 days of purchase if the subscription has not been used for more than 5 sessions. [3]",
+  "grounding": 1.0,
+  "coverage": 0.667,
+  "top_score": 0.6597,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "escalated",
+  "final": "If a customer has raised a chargeback with their bank, the refund ticket must be paused and escalated to the payments risk team. [1] The support agent verifies the order ID, checks usage in the billing console, and raises a refund ticket. [2] Customers can request a full refund within 14 days of purchase if the subscription has not been used for more than 5 sessions. [3]\n\nSources: Customer Refund Standard Operating Procedure - Chargebacks and disputes; Customer Refund Standard Operating Procedure - Processing steps; Customer Refund Standard Operating Procedure - Refund eligibility\nRouted to Customer Support - Billing as HIGH priority for human follow-up.",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "refund",
+     "confidence": 0.991
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {
+      "ids": [
+       "ORD-55120"
+      ]
+     },
+     "priority": "high"
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "Customer raised a chargeback but is also asking for a refund on ORD-55120",
+     "k": 3,
+     "prior": "refund_sop.md",
+     "hits": [
+      "Customer Refund Standard Operating Procedure > Chargebacks and disputes (0.66)",
+      "Customer Refund Standard Operating Procedure > Processing steps (0.41)",
+      "Customer Refund Standard Operating Procedure > Refund eligibility (0.37)"
+     ]
+    },
+    "ms": 0.32
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 373
+    },
+    "ms": 0.1
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.667,
+     "top_score": 0.6597,
+     "verdict": "accept"
+    },
+    "ms": 0.16
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "escalated",
+     "queue": "Customer Support - Billing"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "How many days of annual leave can I carry forward into next year?",
+  "redacted": "How many days of annual leave can I carry forward into next year?",
+  "pii": {},
+  "summary": "How many days of annual leave can I carry forward into next year?",
+  "category": "hr_leave",
+  "category_confidence": 0.9920040965080261,
+  "entities": {},
+  "priority": "normal",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "How many days of annual leave can I carry forward into next year?",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "leave_policy.md#12",
+    "title": "Leave and Attendance Policy",
+    "section": "Annual leave",
+    "text": "Full-time employees accrue 18 days of paid annual leave per year. Up to 10 unused days can be carried forward to the next calendar year. Leave must be applied for in the HR portal at least 5 working days in advance.",
+    "score": 0.7319
+   },
+   {
+    "id": "leave_policy.md#13",
+    "title": "Leave and Attendance Policy",
+    "section": "Sick leave",
+    "text": "Employees receive 12 days of paid sick leave per year. A medical certificate is required for sick leave longer than 2 consecutive days.",
+    "score": 0.3902
+   },
+   {
+    "id": "leave_policy.md#14",
+    "title": "Leave and Attendance Policy",
+    "section": "Parental leave",
+    "text": "Birthing parents receive 26 weeks of paid parental leave. Non-birthing parents receive 4 weeks of paid parental leave, to be taken within 6 months of the child's birth or adoption.",
+    "score": 0.2296
+   }
+  ],
+  "draft": "Full-time employees accrue 18 days of paid annual leave per year. [1] Up to 10 unused days can be carried forward to the next calendar year. [1] Employees receive 12 days of paid sick leave per year. [2]",
+  "grounding": 1.0,
+  "coverage": 0.857,
+  "top_score": 0.7319,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "auto_resolved",
+  "final": "Full-time employees accrue 18 days of paid annual leave per year. [1] Up to 10 unused days can be carried forward to the next calendar year. [1] Employees receive 12 days of paid sick leave per year. [2]\n\nSources: Leave and Attendance Policy - Annual leave; Leave and Attendance Policy - Parental leave; Leave and Attendance Policy - Sick leave",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.24
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "hr_leave",
+     "confidence": 0.992
+    },
+    "ms": 0.24
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {},
+     "priority": "normal"
+    },
+    "ms": 0.24
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "How many days of annual leave can I carry forward into next year?",
+     "k": 3,
+     "prior": "leave_policy.md",
+     "hits": [
+      "Leave and Attendance Policy > Annual leave (0.73)",
+      "Leave and Attendance Policy > Sick leave (0.39)",
+      "Leave and Attendance Policy > Parental leave (0.23)"
+     ]
+    },
+    "ms": 0.33
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 203
+    },
+    "ms": 0.1
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.857,
+     "top_score": 0.7319,
+     "verdict": "accept"
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "auto_resolved",
+     "queue": "HR Operations"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "Customer asked us to delete all the personal data we hold about them",
+  "redacted": "Customer asked us to delete all the personal data we hold about them",
+  "pii": {},
+  "summary": "Customer asked us to delete all the personal data we hold about them",
+  "category": "data_privacy",
+  "category_confidence": 0.9856992363929749,
+  "entities": {},
+  "priority": "normal",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "Customer asked us to delete all the personal data we hold about them",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "data_retention_policy.md#0",
+    "title": "Data Protection and Retention Policy",
+    "section": "Personal data handling",
+    "text": "Customer personal data such as names, phone numbers, email addresses, PAN and card details must only be stored in approved systems. Personal data must never be pasted into public AI tools or shared over personal email.",
+    "score": 0.4399
+   },
+   {
+    "id": "data_retention_policy.md#2",
+    "title": "Data Protection and Retention Policy",
+    "section": "Data subject requests",
+    "text": "Requests from customers to access or delete their data must be logged with the privacy team within 1 business day and completed within 30 days.",
+    "score": 0.4154
+   },
+   {
+    "id": "data_retention_policy.md#1",
+    "title": "Data Protection and Retention Policy",
+    "section": "Retention periods",
+    "text": "Customer support transcripts are retained for 2 years. Financial records, invoices and expense claims are retained for 8 years to meet statutory audit requirements. Recruitment data of unsuccessful candidates is deleted after 12 months.",
+    "score": 0.3157
+   }
+  ],
+  "draft": "Customer personal data such as names, phone numbers, email addresses, PAN and card details must only be stored in approved systems. [1] Personal data must never be pasted into public AI tools or shared over personal email. [1] Requests from customers to access or delete their data must be logged with the privacy team within 1 business day and completed within 30 days. [2]",
+  "grounding": 1.0,
+  "coverage": 0.667,
+  "top_score": 0.4399,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "auto_resolved",
+  "final": "Customer personal data such as names, phone numbers, email addresses, PAN and card details must only be stored in approved systems. [1] Personal data must never be pasted into public AI tools or shared over personal email. [1] Requests from customers to access or delete their data must be logged with the privacy team within 1 business day and completed within 30 days. [2]\n\nSources: Data Protection and Retention Policy - Data subject requests; Data Protection and Retention Policy - Personal data handling; Data Protection and Retention Policy - Retention periods",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "data_privacy",
+     "confidence": 0.986
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {},
+     "priority": "normal"
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "Customer asked us to delete all the personal data we hold about them",
+     "k": 3,
+     "prior": "data_retention_policy.md",
+     "hits": [
+      "Data Protection and Retention Policy > Personal data handling (0.44)",
+      "Data Protection and Retention Policy > Data subject requests (0.42)",
+      "Data Protection and Retention Policy > Retention periods (0.32)"
+     ]
+    },
+    "ms": 0.33
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 374
+    },
+    "ms": 0.1
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.667,
+     "top_score": 0.4399,
+     "verdict": "accept"
+    },
+    "ms": 0.16
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "auto_resolved",
+     "queue": "Privacy & Security"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "Vendor invoice INV-2231 is on hold, what is missing?",
+  "redacted": "Vendor invoice INV-2231 is on hold, what is missing?",
+  "pii": {},
+  "summary": "Vendor invoice INV-2231 is on hold, what is missing?",
+  "category": "procurement",
+  "category_confidence": 0.9846908450126648,
+  "entities": {
+   "ids": [
+    "INV-2231"
+   ]
+  },
+  "priority": "normal",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "Vendor invoice INV-2231 is on hold, what is missing?",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "procurement_policy.md#19",
+    "title": "Procurement and Vendor Policy",
+    "section": "Invoices and payment terms",
+    "text": "Vendor invoices must quote a valid purchase order number. Standard payment terms are 45 days from invoice receipt. Invoices without a matching purchase order and goods receipt are put on hold.",
+    "score": 0.6038
+   },
+   {
+    "id": "procurement_policy.md#18",
+    "title": "Procurement and Vendor Policy",
+    "section": "Vendor onboarding",
+    "text": "New vendors must submit a GST certificate, PAN, cancelled cheque and signed code of conduct. Vendor master data is verified by finance before the first purchase order is issued. Onboarding normally takes 5 business days.",
+    "score": 0.276
+   },
+   {
+    "id": "procurement_policy.md#16",
+    "title": "Procurement and Vendor Policy",
+    "section": "Purchase requisitions",
+    "text": "Any purchase above INR 50,000 needs a purchase requisition in the procurement system before a vendor is engaged. Purchases below INR 50,000 can use a corporate card with a receipt.",
+    "score": 0.2493
+   }
+  ],
+  "draft": "Vendor invoices must quote a valid purchase order number. [1] Invoices without a matching purchase order and goods receipt are put on hold. [1]",
+  "grounding": 1.0,
+  "coverage": 0.6,
+  "top_score": 0.6038,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "auto_resolved",
+  "final": "Vendor invoices must quote a valid purchase order number. [1] Invoices without a matching purchase order and goods receipt are put on hold. [1]\n\nSources: Procurement and Vendor Policy - Invoices and payment terms; Procurement and Vendor Policy - Purchase requisitions; Procurement and Vendor Policy - Vendor onboarding",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "procurement",
+     "confidence": 0.985
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {
+      "ids": [
+       "INV-2231"
+      ]
+     },
+     "priority": "normal"
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "Vendor invoice INV-2231 is on hold, what is missing?",
+     "k": 3,
+     "prior": "procurement_policy.md",
+     "hits": [
+      "Procurement and Vendor Policy > Invoices and payment terms (0.60)",
+      "Procurement and Vendor Policy > Vendor onboarding (0.28)",
+      "Procurement and Vendor Policy > Purchase requisitions (0.25)"
+     ]
+    },
+    "ms": 0.32
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 143
+    },
+    "ms": 0.09
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.6,
+     "top_score": 0.6038,
+     "verdict": "accept"
+    },
+    "ms": 0.1
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "auto_resolved",
+     "queue": "Procurement"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "My account is locked after the password change, how do I get back in?",
+  "redacted": "My account is locked after the password change, how do I get back in?",
+  "pii": {},
+  "summary": "My account is locked after the password change, how do I get back in?",
+  "category": "it_access",
+  "category_confidence": 0.9241540431976318,
+  "entities": {},
+  "priority": "high",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "My account is locked after the password change, how do I get back in?",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "it_access_policy.md#10",
+    "title": "IT Access and Device Policy",
+    "section": "Password resets and lockouts",
+    "text": "Locked accounts can be unlocked through the self-service password portal after multi-factor verification. If self-service fails, the service desk resets the password after verifying the employee's identity by video call.",
+    "score": 0.5368
+   }
+  ],
+  "draft": "Locked accounts can be unlocked through the self-service password portal after multi-factor verification. [1] If self-service fails, the service desk resets the password after verifying the employee's identity by video call. [1]",
+  "grounding": 1.0,
+  "coverage": 0.6,
+  "top_score": 0.5368,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "escalated",
+  "final": "Locked accounts can be unlocked through the self-service password portal after multi-factor verification. [1] If self-service fails, the service desk resets the password after verifying the employee's identity by video call. [1]\n\nSources: IT Access and Device Policy - Password resets and lockouts\nRouted to IT Service Desk as HIGH priority for human follow-up.",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "it_access",
+     "confidence": 0.924
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {},
+     "priority": "high"
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "My account is locked after the password change, how do I get back in?",
+     "k": 3,
+     "prior": "it_access_policy.md",
+     "hits": [
+      "IT Access and Device Policy > Password resets and lockouts (0.54)"
+     ]
+    },
+    "ms": 0.31
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 228
+    },
+    "ms": 0.05
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.6,
+     "top_score": 0.5368,
+     "verdict": "accept"
+    },
+    "ms": 0.09
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "escalated",
+     "queue": "IT Service Desk"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "Who needs to approve my expense claim of INR 32,000?",
+  "redacted": "Who needs to approve my expense claim of INR 32,000?",
+  "pii": {},
+  "summary": "Who needs to approve my expense claim of INR 32,000?",
+  "category": "expense",
+  "category_confidence": 0.9960554838180542,
+  "entities": {
+   "amounts": [
+    "INR 32,000"
+   ]
+  },
+  "priority": "normal",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "Who needs to approve my expense claim of INR 32,000?",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "expense_policy.md#7",
+    "title": "Travel and Expense Policy",
+    "section": "Approval and payment",
+    "text": "Claims up to INR 25,000 are approved by the line manager. Claims above INR 25,000 also need finance controller approval. Approved claims are paid with the next payroll cycle, usually within 10 business days.",
+    "score": 0.6455
+   },
+   {
+    "id": "expense_policy.md#5",
+    "title": "Travel and Expense Policy",
+    "section": "Claim deadlines",
+    "text": "Expense claims must be submitted in the finance portal within 30 days of the expense date. Claims older than 60 days are rejected unless the employee's director approves a late-submission exception.",
+    "score": 0.5358
+   },
+   {
+    "id": "expense_policy.md#6",
+    "title": "Travel and Expense Policy",
+    "section": "Receipts and limits",
+    "text": "An itemised receipt is mandatory for every expense above INR 500. Hotel stays are capped at INR 9,000 per night in metro cities and INR 6,000 per night elsewhere. Client meals are capped at INR 2,500 per attendee.",
+    "score": 0.3866
+   }
+  ],
+  "draft": "Claims up to INR 25,000 are approved by the line manager. [1] Claims above INR 25,000 also need finance controller approval. [1] Approved claims are paid with the next payroll cycle, usually within 10 business days. [1]",
+  "grounding": 1.0,
+  "coverage": 0.75,
+  "top_score": 0.6455,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "auto_resolved",
+  "final": "Claims up to INR 25,000 are approved by the line manager. [1] Claims above INR 25,000 also need finance controller approval. [1] Approved claims are paid with the next payroll cycle, usually within 10 business days. [1]\n\nSources: Travel and Expense Policy - Approval and payment; Travel and Expense Policy - Claim deadlines; Travel and Expense Policy - Receipts and limits",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "expense",
+     "confidence": 0.996
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {
+      "amounts": [
+       "INR 32,000"
+      ]
+     },
+     "priority": "normal"
+    },
+    "ms": 0.11
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "Who needs to approve my expense claim of INR 32,000?",
+     "k": 3,
+     "prior": "expense_policy.md",
+     "hits": [
+      "Travel and Expense Policy > Approval and payment (0.65)",
+      "Travel and Expense Policy > Claim deadlines (0.54)",
+      "Travel and Expense Policy > Receipts and limits (0.39)"
+     ]
+    },
+    "ms": 0.32
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 219
+    },
+    "ms": 0.09
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.75,
+     "top_score": 0.6455,
+     "verdict": "accept"
+    },
+    "ms": 0.12
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "auto_resolved",
+     "queue": "Finance - Reimbursements"
+    },
+    "ms": 0.01
+   }
+  ]
+ },
+ {
+  "request": "Can I work from home three days a week?",
+  "redacted": "Can I work from home three days a week?",
+  "pii": {},
+  "summary": "Can I work from home three days a week?",
+  "category": "hr_leave",
+  "category_confidence": 0.9835276007652283,
+  "entities": {},
+  "priority": "normal",
+  "plan": [
+   "research",
+   "analyst",
+   "critic",
+   "responder"
+  ],
+  "query": "Can I work from home three days a week?",
+  "k": 3,
+  "retrieved": [
+   {
+    "id": "leave_policy.md#15",
+    "title": "Leave and Attendance Policy",
+    "section": "Remote work",
+    "text": "Employees may work remotely up to 2 days per week with manager approval. Fully remote arrangements need HR approval and a signed remote work agreement.",
+    "score": 0.4747
+   },
+   {
+    "id": "leave_policy.md#12",
+    "title": "Leave and Attendance Policy",
+    "section": "Annual leave",
+    "text": "Full-time employees accrue 18 days of paid annual leave per year. Up to 10 unused days can be carried forward to the next calendar year. Leave must be applied for in the HR portal at least 5 working days in advance.",
+    "score": 0.2643
+   },
+   {
+    "id": "leave_policy.md#14",
+    "title": "Leave and Attendance Policy",
+    "section": "Parental leave",
+    "text": "Birthing parents receive 26 weeks of paid parental leave. Non-birthing parents receive 4 weeks of paid parental leave, to be taken within 6 months of the child's birth or adoption.",
+    "score": 0.255
+   }
+  ],
+  "draft": "Employees may work remotely up to 2 days per week with manager approval. [1] Fully remote arrangements need HR approval and a signed remote work agreement. [1] Leave must be applied for in the HR portal at least 5 working days in advance. [2]",
+  "grounding": 1.0,
+  "coverage": 0.6,
+  "top_score": 0.4747,
+  "attempts": 0,
+  "needs_retry": false,
+  "resolution": "auto_resolved",
+  "final": "Employees may work remotely up to 2 days per week with manager approval. [1] Fully remote arrangements need HR approval and a signed remote work agreement. [1] Leave must be applied for in the HR portal at least 5 working days in advance. [2]\n\nSources: Leave and Attendance Policy - Annual leave; Leave and Attendance Policy - Parental leave; Leave and Attendance Policy - Remote work",
+  "trace": [
+   {
+    "agent": "intake",
+    "action": "redact_pii",
+    "detail": {
+     "redacted": "none found"
+    },
+    "ms": 0.1
+   },
+   {
+    "agent": "intake",
+    "action": "classify",
+    "detail": {
+     "category": "hr_leave",
+     "confidence": 0.984
+    },
+    "ms": 0.1
+   },
+   {
+    "agent": "intake",
+    "action": "extract",
+    "detail": {
+     "entities": {},
+     "priority": "normal"
+    },
+    "ms": 0.1
+   },
+   {
+    "agent": "router",
+    "action": "plan",
+    "detail": {
+     "plan": [
+      "research",
+      "analyst",
+      "critic",
+      "responder"
+     ],
+     "k": 3,
+     "reason": "confident intent"
+    },
+    "ms": 0.01
+   },
+   {
+    "agent": "research",
+    "action": "retrieve",
+    "detail": {
+     "query": "Can I work from home three days a week?",
+     "k": 3,
+     "prior": "leave_policy.md",
+     "hits": [
+      "Leave and Attendance Policy > Remote work (0.47)",
+      "Leave and Attendance Policy > Annual leave (0.26)",
+      "Leave and Attendance Policy > Parental leave (0.26)"
+     ]
+    },
+    "ms": 0.31
+   },
+   {
+    "agent": "analyst",
+    "action": "draft_answer",
+    "detail": {
+     "backend": "local-extractive",
+     "chars": 242
+    },
+    "ms": 0.09
+   },
+   {
+    "agent": "critic",
+    "action": "review",
+    "detail": {
+     "grounding": 1.0,
+     "coverage": 0.6,
+     "top_score": 0.4747,
+     "verdict": "accept"
+    },
+    "ms": 0.13
+   },
+   {
+    "agent": "responder",
+    "action": "respond",
+    "detail": {
+     "resolution": "auto_resolved",
+     "queue": "HR Operations"
+    },
+    "ms": 0.01
+   }
+  ]
+ }
+]
