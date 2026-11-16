@@ -21,7 +21,7 @@ A multi-agent system that takes an incoming employee or customer request, cleans
 ### Flow
 
 ```mermaid
-flowchart LR
+flowchart TD
     A([Incoming request<br/>email · ticket · chat]) --> B
 
     subgraph INTAKE[Intake agent]
